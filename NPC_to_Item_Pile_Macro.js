@@ -1,8 +1,8 @@
 // Created by u/shuggaloaf. 
 // If you redistribute this, please just give me credit. 
-// Linked image was created using game-icons.net and may not be used for any commerical purposes. 
+// Linked images created using game-icons.net and may not be used for any commerical purposes. 
 //
-// Enjoy! ☮️♥️😊
+// Enjoy! 
 //
 //
 //
@@ -39,7 +39,7 @@
 //   Whichever image you choose to use, since I do not know that path where you will store it,  
 //   MAKE SURE to SET THE PATH on the next line:
 
-   let imgPath = "Images/Icons/Custom/LootBag4.svg";  //<--Make this match your image path 
+   let imgPath = "Images/Icons/Custom/LootBag1.svg";  //<--Make this match your image path 
 
 //
 //   LIGHT EFFECT
