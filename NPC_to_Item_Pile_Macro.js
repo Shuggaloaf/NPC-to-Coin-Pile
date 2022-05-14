@@ -39,7 +39,7 @@
 //   Whichever image you choose to use, since I do not know that path where you will store it,  
 //   MAKE SURE to SET THE PATH on the next line:
 
-   let imgPath = "Images/Icons/Custom/LootBag1.svg";  //<--Make this match your image path 
+   let imgPath = "/icons/svg/chest.svg";  //<--Make this match your image path 
 
 //
 //   LIGHT EFFECT
