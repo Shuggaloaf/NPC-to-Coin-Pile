@@ -39,7 +39,7 @@
 //   Whichever image you choose to use, since I do not know that path where you will store it,  
 //   MAKE SURE to SET THE PATH on the next line:
 
-   let imgPath = "Images/Icons/Custom/LootBag1.svg";  //<--Make this match your image path 
+   let imgPath = "Images/Icons/Custom/LootBag4.svg";  //<--Make this match your image path 
 
 //
 //   LIGHT EFFECT
@@ -127,8 +127,9 @@ for(let c of canvas.tokens.controlled){
                 light:{
                     dim:0.2,
                     bright:0.2,
-                    luminosity:0.35,
-                    color:'#998000',
+                    luminosity:0,
+                    alpha:.5,
+                    color:'#ad8800',
                     coloration:8,
                     animation:{
                         type:"radialrainbow",
@@ -145,8 +146,9 @@ for(let c of canvas.tokens.controlled){
                 light:{
                     dim:0.2,
                     bright:0.2,
-                    luminosity:0.35,
-                    color:'#998000',
+                    luminosity:0,
+                    alpha:.5,
+                    color:'#ad8800',
                     coloration:8,
                     animation:{
                         type:"radialrainbow",
