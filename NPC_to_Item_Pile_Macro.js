@@ -1,20 +1,26 @@
 // Created by u/shuggaloaf. 
 // If you redistribute this, please just give me credit. 
-// Linked images created using game-icons.net and may not be used for any commerical purposes. 
+// Linked images created using game-icons.net and may 
+// not be used for any commerical purposes. 
 //
 // Enjoy! 
-//
-//
-//
-// MACRO SYNOPSIS
-//   Checks to make sure each selected token is an NPC and if so rolls separately for each token to:
+
+
+
+///////////////////////////////////////////////////////
+//////////////////// MACRO SYNOPSIS ///////////////////
+///////////////////////////////////////////////////////
+//   
+//  Checks to make sure each selected token is an NPC
+//  and if so rolls separately for each token to:
 //     - determine random coinage (if any), 
 //     - adds that coin to the token,
 //     - turns token into an Item Pile
-//     - Adds a special effect to tghe token (if you desire)
-//
-//
-//
+//     - Adds a special effect to the token
+//          (if you desire)
+
+
+
 /////////////////////////////////////////////////////
 //////////////////// USER OPTIONS ///////////////////
 /////////////////////////////////////////////////////
@@ -23,13 +29,15 @@
 //   You may also use this with our without the module Item Piles. 
 //
 // ITEM PILES INTEGRATION
-//   If you have the Item Piles module, this macro can automatically make all selected tokens player-lootable.  
-//   To turn off integration change the option on the line below to 0
-//
+//   If you have the Item Piles module, this macro can automatically make 
+//   all selected tokens player-lootable.  
+//   
+//  To TURN OFF integration change the option on the line below to 0
+
    let hasItemPiles = 1;  // change the 1 to a 0 if you do not have Item Piles, or do not want to use integration. 
-//
-//                                                          
-//   IMAGE CHANGE                                           
+
+                                                          
+// IMAGE CHANGE                                           
 //   Changes the token image. For example you could use a chest or a loot sack. 
 //
 //   I cannot provide the image I personally use as it is commercial... 
@@ -39,26 +47,28 @@
 //   Whichever image you choose to use, since I do not know that path where you will store it,  
 //   MAKE SURE to SET THE PATH on the next line:
 
-   let imgPath = "/icons/svg/chest.svg";  //<--Make this match your image path 
+   let imgPath = "Images/Icons/Custom/LootBag1.svg";  //<--Make this match your image path 
 
-//
-//   LIGHT EFFECT
+
+// LIGHT EFFECT
 //   Creates a color-shifting light effect. 
 //   WARNING: This will overwrite any existing lighting. However, since they'd likely be dead 
 //     at this point, this probably doesn't matter too much. 
 //
 //
-//   OPTION SELECTION
+// OPTION SELECTION
 //   To change options, set the number after the "userOption =" below to your choice. 
-//     0 = No Special Effect, Coin roll and Item Pile Transformation Only
-//     1 = Light Effect only
-//     2 = Change Image Only
-//     3 = Both Image Change and Light effect
+//     Coin roll and -if enabled- Item Pile Transformation PLUS:
+//       0 = No Special Effect       
+//       1 = Light Effect only
+//       2 = Change Image Only
+//       3 = Both Image Change and Light effect
 
-   let userOption = 1; //Change the 1 to another option's number if you choose. 
+   let userOption = 3; //Change the 1 to another option's number if you choose. 
    
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
+
 
 
 
@@ -128,31 +138,32 @@ for(let c of canvas.tokens.controlled){
                     dim:0.2,
                     bright:0.2,
                     luminosity:0,
-                    alpha:.5,
+                    alpha:1,
                     color:'#ad8800',
-                    coloration:8,
+                    coloration:6,
                     animation:{
                         type:"radialrainbow",
-                        speed:2,
+                        speed:3,
                         intensity:10
                     }
                 }
             });
         } else if (userOption === 2){
-            await c.document.update({img : imgPath});
+            await c.document.update({img : imgPath, rotation : 0});
         } else if (userOption === 3){
-            await c.document.update({img : imgPath});
             await c.data.document.update({
+                img: imgPath,
+                rotation : 0,
                 light:{
                     dim:0.2,
                     bright:0.2,
                     luminosity:0,
-                    alpha:.5,
+                    alpha:1,
                     color:'#ad8800',
-                    coloration:8,
+                    coloration:6,
                     animation:{
                         type:"radialrainbow",
-                        speed:2,
+                        speed:3,
                         intensity:10
                     }
                 }
