@@ -81,3 +81,15 @@ You've got 4 options to choose from:
 ## Change Token Image & Add Light Effect, Roll Random Coin, Turn into Item Pile (Option 3)
 
 <img src="https://github.com/Shuggaloaf/NPC-to-Item-Pile/blob/main/Examples/Capture-09.gif" width="50%"/>
+
+# Average Coin by Percentage Roll
+Roll|Percent|Avg Coin Amt
+---|---|---
+<25|25.00%|Nothing
+26-49|24%|6 CP
+50-85|36%|1 GP
+86-91|6%|5 GP
+92-93|2%|10GP
+94-97|4%|20GP
+98-99|2%|50GP
+100|1%|100GP
