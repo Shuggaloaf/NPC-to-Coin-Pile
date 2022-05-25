@@ -138,11 +138,11 @@ for(let c of canvas.tokens.controlled){
         await rollCoins("0","0","0","1d10");              //6CP avg
     } else if (rand.total>49 && rand.total<86){
         await rollCoins("0","0","4d3","1d14+11");         //1GP avg
-    } else if (rand.total>85 && rand.total<92){
+    } else if (rand.total>85 && rand.total<91){
         await rollCoins("0","2d3","2d10+10","1d21+39");   //5GP avg
-    } else if (rand.total>91 && rand.total<94){
+    } else if (rand.total>90 && rand.total<95){
         await rollCoins("0","1d6+4","7d5","1d21+59");     //10GP avg
-    } else if (rand.total>93 && rand.total<98){
+    } else if (rand.total>94 && rand.total<98){
         await rollCoins("0","1d10+5","15d6","50d3");      //20GP avg
     } else if (rand.total>97 && rand.total<100){
         await rollCoins("1d3","10d3+3","15d6","40d4");    //50GP avg
