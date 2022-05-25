@@ -32,7 +32,9 @@ At the beggining of the macro there are instructions to walk you through each op
 
 ### Don't have Item Piles? 
 
-If you like the idea of turning an NPC into a player-lootable token, check out Item Piles: https://foundryvtt.com/packages/item-piles
+You do not need to have the module Item Piles installed to still use theis macro. Without IP it will still add coins and a visual effect (if desired)
+
+However, the core idea of making this macro was for the item pile aspect to allow players to loot NPCs themselves. If you like the idea of turning an NPC into a player-lootable token, check out Item Piles: https://foundryvtt.com/packages/item-piles
 
 If not, no problem, just go to line # 29 and you should see `let hasItemPiles = 1;`. Just change the `1` to a `0`.
 
