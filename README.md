@@ -86,10 +86,10 @@ You've got 4 options to choose from:
 Roll|Percent|Avg Coin Amt
 ---|---|---
 <25|25%|Nothing
-26-49|24%|6 CP
-50-85|36%|1 GP
-86-90|5%|5 GP
-91-94|4%|10GP
+26-55|30%|6 CP
+56-79|24%|1 GP
+80-89|10%|5 GP
+90-94|5%|10GP
 95-97|3%|20GP
 98-99|2%|50GP
 100|1%|100GP
