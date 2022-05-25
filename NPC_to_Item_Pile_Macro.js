@@ -92,7 +92,7 @@
 //       3 = Both Image Change and Light effect
 
    let userOption = 3; 
-// Change the 1 to another option's number if you choose. 
+// Change the 3 to another option's number if you choose. 
    
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
