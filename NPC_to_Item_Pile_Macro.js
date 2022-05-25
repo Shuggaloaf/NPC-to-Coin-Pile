@@ -152,6 +152,7 @@ for(let c of canvas.tokens.controlled){
     
     console.log("_________________________________________________________")   
     
+     
     if (c.actor.data.data.details.level > 0) {
        break;
     } else {   
@@ -160,7 +161,6 @@ for(let c of canvas.tokens.controlled){
         }
         if (userOption === 0){
         }else if (userOption === 1){
-            let gridSize = game.canvas.scene.data.grid;
             await c.data.document.update({
                 light:{
                     dim:0.2,
