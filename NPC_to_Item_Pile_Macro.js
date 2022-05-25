@@ -134,13 +134,13 @@ for(let c of canvas.tokens.controlled){
     if(rand.total<26){
         console.log(">>> No coins found")                 //Nothing
 
-    } else if (rand.total>25 && rand.total<50){
+    } else if (rand.total>26 && rand.total<56){
         await rollCoins("0","0","0","1d10");              //6CP avg
-    } else if (rand.total>49 && rand.total<86){
+    } else if (rand.total>55 && rand.total<80){
         await rollCoins("0","0","4d3","1d14+11");         //1GP avg
-    } else if (rand.total>85 && rand.total<91){
+    } else if (rand.total>79 && rand.total<90){
         await rollCoins("0","2d3","2d10+10","1d21+39");   //5GP avg
-    } else if (rand.total>90 && rand.total<95){
+    } else if (rand.total>89 && rand.total<95){
         await rollCoins("0","1d6+4","7d5","1d21+59");     //10GP avg
     } else if (rand.total>94 && rand.total<98){
         await rollCoins("0","1d10+5","15d6","50d3");      //20GP avg
