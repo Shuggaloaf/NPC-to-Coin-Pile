@@ -49,7 +49,7 @@ Go to line # 42 and you'll see `let imgPath = "Images/Icons/Custom/LootBag1.svg"
 Go to line # 58, where you'll see `let userOption = 1;`
 
 You've got 4 options to choose from:
-- 0 = No Special Effect, Coin roll and Item Pile Transformation Only
+- 0 = No Special Effect, Coin roll and -if enabled- Item Pile Transformation Only 
 - 1 = Light Effect only
 - 2 = Change Image Only
 - 3 = Both Image Change and Light effect
