@@ -1,10 +1,17 @@
-// Created by u/shuggaloaf. 
+///////////////////////////////////////////////////////
+//////////////////// CREATED BY ///////////////////////
+///////////////////////////////////////////////////////
+// This macro was created by u/shuggaloaf.
 // If you redistribute this, please just give me credit. 
+// Better yet, give them the GitHub link so they're 
+// always up to date: 
+// https://github.com/Shuggaloaf/NPC-to-Coin-Pile
+//
 // Linked images created using game-icons.net and may 
 // not be used for any commerical purposes. 
 //
 // Enjoy! 
-
+///////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////
@@ -18,53 +25,74 @@
 //     - turns token into an Item Pile
 //     - Adds a special effect to the token
 //          (if you desire)
-
+///////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////
 //////////////////// USER OPTIONS ///////////////////
 /////////////////////////////////////////////////////
 //
-//   You can have a Light Effect, an Image Change, or Both or Neither.    
-//   You may also use this with our without the module Item Piles. 
+//   You can have a Light Effect, an Image Change
+//   or Both or Neither.    
+//   You may also use this with our without the module 
+//   Item Piles. 
 //
 // ITEM PILES INTEGRATION
-//   If you have the Item Piles module, this macro can automatically make 
-//   all selected tokens player-lootable.  
+//   If you have the Item Piles module, this macro 
+//   can automatically make all selected tokens 
+//   player-lootable.  
 //   
-//  To TURN OFF integration change the option on the line below to 0
+//  To TURN OFF integration change the option on the 
+//  line below to 0
 
-   let hasItemPiles = 1;  // change the 1 to a 0 if you do not have Item Piles, or do not want to use integration. 
+   let hasItemPiles = 1;  
+
+// change the 1 above to a 0 if you do not have Item 
+// Piles, or do not want to use integration. 
 
                                                           
 // IMAGE CHANGE                                           
-//   Changes the token image. For example you could use a chest or a loot sack. 
+//   Changes the token image. For example you could 
+//   use a chest or a loot sack. 
 //
-//   I cannot provide the image I personally use as it is commercial... 
-//   However I made you a few free ones! Nothing fancy, but they're available here if you want: 
-//     https://github.com/Shuggaloaf/NPC-to-Item-Pile/tree/main/img
+//   I cannot provide the image I personally use as
+//   it is commercial... 
+//   However I made you a few free ones! Nothing fancy,
+//   but they're available here if you want: 
+//    https://github.com/Shuggaloaf/NPC-to-Item-Pile/tree/main/img
 //
-//   Whichever image you choose to use, since I do not know that path where you will store it,  
+//   If you use your own image and the lighting effect
+//   option keep in mind that image coloring can affect
+//   the intensity of the light effect
+//
+//   Whichever image you choose to use, since I do not
+//   know that path where you will store it,  
+//
 //   MAKE SURE to SET THE PATH on the next line:
 
-   let imgPath = "Images/Icons/Custom/LootBag1.svg";  //<--Make this match your image path 
-
+   let imgPath = "Images/Icons/Custom/LootBag1.svg";  
+//      Make this match your image path 
 
 // LIGHT EFFECT
 //   Creates a color-shifting light effect. 
-//   WARNING: This will overwrite any existing lighting. However, since they'd likely be dead 
-//     at this point, this probably doesn't matter too much. 
+//   WARNING: This will overwrite any existing lighting. 
+//     However, since they'd likely be dead at this point,
+//     this probably doesn't matter too much. 
 //
 //
 // OPTION SELECTION
-//   To change options, set the number after the "userOption =" below to your choice. 
-//     Coin roll and -if enabled- Item Pile Transformation PLUS:
+//   To change options, set the number after the
+//   "userOption =" below to your choice. 
+//
+//   Coin roll and -if enabled- 
+//   Item Pile Transformation PLUS:
 //       0 = No Special Effect       
 //       1 = Light Effect only
 //       2 = Change Image Only
 //       3 = Both Image Change and Light effect
 
-   let userOption = 3; //Change the 1 to another option's number if you choose. 
+   let userOption = 3; 
+// Change the 1 to another option's number if you choose. 
    
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
