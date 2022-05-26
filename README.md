@@ -94,3 +94,16 @@ Roll|Percent|Avg Coin Amt
 95-97|3%|20GP
 98-99|2%|50GP
 100|1%|100GP
+
+# Results of 100 rolls
+
+I wanted to get an idea of the overall average, so I rolled this macro 100 times. It also showed that it's right on track with my percentage table. 
+
+Here are a few highlights:
+
+- Average of all rolls = 2.97 GP
+- Total for all rolls = 296.68 GP
+- 23/100 rolls = nothing (est. 25%)
+- 43/100 rolls < 1GP (NOT incl. the 23 "0" rolls above)
+- 1/100 result of 100 for ~ 61GP (est. 1%)
+
