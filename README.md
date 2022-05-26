@@ -43,6 +43,7 @@ If not, no problem, just go to line # 29 and you should see `let hasItemPiles = 
 Go to line # 42 and you'll see `let imgPath = "Images/Icons/Custom/LootBag1.svg";` and just change it to whatever path you prefer.
 - I cannot provide the image I personally use as it is commercial... But I made you a few free ones!
   Nothing fancy, but they're available here in the `img` folder above if you want them.
+  (Don't forget to change the `userOption` field to 2 or 3 as well!)
 
 ### Want to Change the Token Image and/or add a Light Effect (or neither)?
 
