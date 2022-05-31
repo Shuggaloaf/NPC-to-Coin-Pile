@@ -13,6 +13,10 @@ Checks all selected tokens. If the token is not a NPC, it does nothing. For each
 
 &nbsp;
 
+Note: As far as I know, this only works on the DnD5e system. 
+
+&nbsp;
+
 ## Instructions
 
 1. Just click on the `NPC_to_Item_Pile_Macro.js` file above.
