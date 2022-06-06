@@ -163,14 +163,14 @@ for(let c of canvas.tokens.controlled){
         }else if (userOption === 1){
             await c.data.document.update({
                 light:{
-                    dim:0.2,
-                    bright:0.2,
+                    dim:0.5,
+                    bright:0.25,
                     luminosity:0,
                     alpha:1,
-                    color:'#ad8800',
-                    coloration:6,
+                    color:'#ad7600',
+                    coloration:2,
                     animation:{
-                        type:"radialrainbow",
+                        type:"sunburst",
                         speed:3,
                         intensity:10
                     }
@@ -183,14 +183,14 @@ for(let c of canvas.tokens.controlled){
                 img: imgPath,
                 rotation : 0,
                 light:{
-                    dim:0.2,
-                    bright:0.2,
+                    dim:0.5,
+                    bright:0.25,
                     luminosity:0,
                     alpha:1,
-                    color:'#ad8800',
-                    coloration:6,
+                    color:'#ad7600',
+                    coloration:2,
                     animation:{
-                        type:"radialrainbow",
+                        type:"sunburst",
                         speed:3,
                         intensity:10
                     }
