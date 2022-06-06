@@ -168,7 +168,7 @@ for(let c of canvas.tokens.controlled){
                     luminosity:0,
                     alpha:1,
                     color:'#ad7600',
-                    coloration:2,
+                    coloration:9,
                     animation:{
                         type:"sunburst",
                         speed:3,
@@ -188,7 +188,7 @@ for(let c of canvas.tokens.controlled){
                     luminosity:0,
                     alpha:1,
                     color:'#ad7600',
-                    coloration:2,
+                    coloration:9,
                     animation:{
                         type:"sunburst",
                         speed:3,
