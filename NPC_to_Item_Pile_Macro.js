@@ -98,7 +98,6 @@ let userOption = 1;
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
-debugger;
 for (let c of canvas.tokens.controlled) {
     if (c.actor.type !== 'npc') {
         console.log("XXXXX__//  ", c.actor.name, "is not an NPC   \\\\__XXXXX");
