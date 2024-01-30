@@ -117,11 +117,6 @@ for (let c of canvas.tokens.controlled) {
             let rollSP = await new Roll(SP).roll({ async: true });
             let rollGP = await new Roll(GP).roll({ async: true });
             let rollPP = await new Roll(PP).roll({ async: true });
-
-            let actorCP = currency.cp + rollCP.total;
-            let actorSP = currency.sp + rollSP.total;
-            let actorGP = currency.gp + rollGP.total;
-            let actorPP = currency.pp + rollPP.total;
             
             await tokActor.update({ "data.currency.cp": currency.cp + rollCP.total, "data.currency.sp": currency.sp + rollSP.total, "data.currency.gp": currency.gp + rollGP.total, "data.currency.pp": currency.pp + rollPP.total });
             await console.log('>>>', tokActor.name, 'Coins Added>>   CP:', rollCP.total, ' // SP:', rollSP.total, ' // GP:', rollGP.total, ' // PP:', rollPP.total, ' // ',);
@@ -158,7 +153,7 @@ for (let c of canvas.tokens.controlled) {
         console.log("_________________________________________________________")
 
         if (hasItemPiles === 1) {
-            ItemPiles.API.turnTokensIntoItemPiles(c);
+            await ItemPiles.API.turnTokensIntoItemPiles(c);
         }
         if (userOption === 0) {
         } else if (userOption === 1) {
