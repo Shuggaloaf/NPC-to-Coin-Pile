@@ -123,14 +123,8 @@ for (let c of canvas.tokens.controlled) {
             let actorSP = currency.sp + rollSP.total;
             let actorGP = currency.gp + rollGP.total;
             let actorPP = currency.pp + rollPP.total;
-
-            try {
-                await tokActor.update({ "data.currency.cp": currency.cp + rollCP.total, "data.currency.sp": currency.sp + rollSP.total, "data.currency.gp": currency.gp + rollGP.total, "data.currency.pp": currency.pp + rollPP.total });
-            } catch (error) {
-                console.error("HMM");
-                throw error;
-            }
-
+            
+            await tokActor.update({ "data.currency.cp": currency.cp + rollCP.total, "data.currency.sp": currency.sp + rollSP.total, "data.currency.gp": currency.gp + rollGP.total, "data.currency.pp": currency.pp + rollPP.total });
             await console.log('>>>', tokActor.name, 'Coins Added>>   CP:', rollCP.total, ' // SP:', rollSP.total, ' // GP:', rollGP.total, ' // PP:', rollPP.total, ' // ',);
         }
 
