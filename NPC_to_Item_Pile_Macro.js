@@ -1,3 +1,4 @@
+// JavaScript source code
 ///////////////////////////////////////////////////////
 //////////////////// CREATED BY ///////////////////////
 ///////////////////////////////////////////////////////
@@ -45,12 +46,12 @@
 //  To TURN OFF integration change the option on the 
 //  line below to 0
 
-   let hasItemPiles = 1;  
+let hasItemPiles = 1;
 
 // change the 1 above to a 0 if you do not have Item 
 // Piles, or do not want to use integration. 
 
-                                                          
+
 // IMAGE CHANGE                                           
 //   Changes the token image. For example you could 
 //   use a chest or a loot sack. 
@@ -70,7 +71,7 @@
 //
 //   MAKE SURE to SET THE PATH on the next line:
 
-   let imgPath = "Images/Icons/Custom/LootBag1.svg";  
+let imgPath = "Images/Icons/Custom/LootBag1.svg";
 //      Make this match your image path 
 
 // LIGHT EFFECT
@@ -91,108 +92,116 @@
 //       2 = Change Image Only
 //       3 = Both Image Change and Light effect
 
-   let userOption = 1; 
+let userOption = 1;
 // Change the 1 to another option's number if you choose. 
-   
+
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
-
-
-
-for(let c of canvas.tokens.controlled){
-  if (c.actor.data.data.details.level > 0) {
-    console.log("XXXXX__//  ",c.data.name,"is a PC   \\\\__XXXXX");
-    continue;
-  } else {
-    let tokActor = c.actor;
-    
-    const rand = new Roll("1d100").evaluate({async: false});
-
-    console.log("_________________________________________________________")
-    console.log("!!!",tokActor.data.name," Random Roll: ",rand.total);
-
-    ///////// Coins /////////
-    async function rollCoins(PP, GP, SP, CP) {    
-        let currency = tokActor.data.data.currency;
-    
-        let rollCP = await new Roll(CP).roll({async:true});
-        let rollSP = await new Roll(SP).roll({async:true});
-        let rollGP = await new Roll(GP).roll({async:true});
-        let rollPP = await new Roll(PP).roll({async:true});
-    
-        let actorCP = currency.cp + rollCP.total;
-        let actorSP = currency.sp + rollSP.total;
-        let actorGP = currency.gp + rollGP.total;
-        let actorPP = currency.pp + rollPP.total;
-        
-        await tokActor.update({"data.currency.cp": currency.cp + rollCP.total, "data.currency.sp": currency.sp + rollSP.total, "data.currency.gp": currency.gp + rollGP.total, "data.currency.pp": currency.pp + rollPP.total});
-
-        await console.log('>>>',tokActor.data.name,'Coins Added>>   CP:',rollCP.total,' // SP:',rollSP.total,' // GP:',rollGP.total,' // PP:',rollPP.total,' // ',);
-    }
-
-    if(rand.total<26){
-        console.log(">>> No coins found")                 //Nothing
-
-    } else if (rand.total>26 && rand.total<56){
-        await rollCoins("0","0","0","1d10");              //6CP avg
-    } else if (rand.total>55 && rand.total<80){
-        await rollCoins("0","0","4d3","1d14+11");         //1GP avg
-    } else if (rand.total>79 && rand.total<90){
-        await rollCoins("0","2d3","2d10+10","1d21+39");   //5GP avg
-    } else if (rand.total>89 && rand.total<95){
-        await rollCoins("0","1d6+4","7d5","1d21+59");     //10GP avg
-    } else if (rand.total>94 && rand.total<98){
-        await rollCoins("0","1d10+5","15d6","50d3");      //20GP avg
-    } else if (rand.total>97 && rand.total<100){
-        await rollCoins("1d3","10d3+3","15d6","40d4");    //50GP avg
+debugger;
+for (let c of canvas.tokens.controlled) {
+    if (c.actor.type !== 'npc') {
+        console.log("XXXXX__//  ", c.actor.name, "is not an NPC   \\\\__XXXXX");
+        continue;
     } else {
-        await rollCoins("3d3","24d2","10d6","25d6");      //100GP avg
-    }
-    
-    console.log("_________________________________________________________")   
-    
-     
-    if (c.actor.data.data.details.level > 0) {
-       break;
-    } else {   
-        if (hasItemPiles === 1){
+        let tokActor = c.actor;
+
+        const rand = new Roll("1d100").evaluate({ async: false });
+
+        console.log("_________________________________________________________")
+        console.log("!!!", tokActor.name, " Random Roll: ", rand.total);
+
+        ///////// Coins /////////
+        async function rollCoins(PP, GP, SP, CP) {
+            let currency = tokActor.system.currency;
+
+            let rollCP = await new Roll(CP).roll({ async: true });
+            let rollSP = await new Roll(SP).roll({ async: true });
+            let rollGP = await new Roll(GP).roll({ async: true });
+            let rollPP = await new Roll(PP).roll({ async: true });
+
+            let actorCP = currency.cp + rollCP.total;
+            let actorSP = currency.sp + rollSP.total;
+            let actorGP = currency.gp + rollGP.total;
+            let actorPP = currency.pp + rollPP.total;
+
+            try {
+                await tokActor.update({ "data.currency.cp": currency.cp + rollCP.total, "data.currency.sp": currency.sp + rollSP.total, "data.currency.gp": currency.gp + rollGP.total, "data.currency.pp": currency.pp + rollPP.total });
+            } catch (error) {
+                console.error("HMM");
+                throw error;
+            }
+
+            await console.log('>>>', tokActor.name, 'Coins Added>>   CP:', rollCP.total, ' // SP:', rollSP.total, ' // GP:', rollGP.total, ' // PP:', rollPP.total, ' // ',);
+        }
+
+        // Params: rollCoins(PP, GP, SP, CP)
+        const percent_chance_16 = () => rollCoins("0", "0", "0", "0");
+        const percent_chance_39 = () => rollCoins("0", "0", "3d4", "0");
+        const percent_chance_24 = () => rollCoins("0", "0", "4d4", "0");
+        const percent_chance_10 = () => rollCoins("0", "0", "5d4", "0");
+        const percent_chance_5 = () => rollCoins("0", "1", "0", "0");
+        const percent_chance_3 = () => rollCoins("0", "1", "3d6", "0");
+        const percent_chance_2 = () => rollCoins("0", "2", "2d6", "0");
+        const percent_chance_1 = () => rollCoins("0", "3", "1d6", "0");
+
+        if (rand.total < 16) {
+            await percent_chance_16();
+        } else if (rand.total > 16 && rand.total < 56) {
+            await percent_chance_39();
+        } else if (rand.total > 55 && rand.total < 80) {
+            await percent_chance_24();
+        } else if (rand.total > 79 && rand.total < 90) {
+            await percent_chance_10();
+        } else if (rand.total > 89 && rand.total < 95) {
+            await percent_chance_5();
+        } else if (rand.total > 94 && rand.total < 98) {
+            await percent_chance_3();
+        } else if (rand.total > 97 && rand.total < 100) {
+            await percent_chance_2();
+        } else {
+            await percent_chance_1();
+        }
+
+        console.log("_________________________________________________________")
+
+        if (hasItemPiles === 1) {
             ItemPiles.API.turnTokensIntoItemPiles(c);
         }
-        if (userOption === 0){
-        }else if (userOption === 1){
-            await c.data.document.update({
-                light:{
-                    dim:0.5,
-                    bright:0.25,
-                    luminosity:0,
-                    alpha:1,
-                    color:'#ad7600',
-                    coloration:9,
-                    animation:{
-                        type:"sunburst",
-                        speed:3,
-                        intensity:10
+        if (userOption === 0) {
+        } else if (userOption === 1) {
+            await c.document.update({
+                light: {
+                    dim: 0.5,
+                    bright: 0.25,
+                    luminosity: 0,
+                    alpha: 1,
+                    color: '#ad7600',
+                    coloration: 9,
+                    animation: {
+                        type: "sunburst",
+                        speed: 3,
+                        intensity: 10
                     }
                 }
             });
-        } else if (userOption === 2){
-            await c.document.update({img : imgPath, rotation : 0});
-        } else if (userOption === 3){
-            await c.data.document.update({
+        } else if (userOption === 2) {
+            await c.document.update({ img: imgPath, rotation: 0 });
+        } else if (userOption === 3) {
+            await c.document.update({
                 img: imgPath,
-                rotation : 0,
-                light:{
-                    dim:0.5,
-                    bright:0.25,
-                    luminosity:0,
-                    alpha:1,
-                    color:'#ad7600',
-                    coloration:9,
-                    animation:{
-                        type:"sunburst",
-                        speed:3,
-                        intensity:10
+                rotation: 0,
+                light: {
+                    dim: 0.5,
+                    bright: 0.25,
+                    luminosity: 0,
+                    alpha: 1,
+                    color: '#ad7600',
+                    coloration: 9,
+                    animation: {
+                        type: "sunburst",
+                        speed: 3,
+                        intensity: 10
                     }
                 }
             });
@@ -200,5 +209,4 @@ for(let c of canvas.tokens.controlled){
             ui.notifications.error(`Error with User Options. Choose a valid option.`);
         }
     }
-  }
 }
