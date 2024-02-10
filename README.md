@@ -1,3 +1,5 @@
+## Updated for V11
+
 # NPC to Coin Pile
 
 A Macro to turn a NPC token into an Item Pile, add random coinage and add a special effect if desired. 
