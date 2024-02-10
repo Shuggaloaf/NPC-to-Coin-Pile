@@ -91,8 +91,8 @@
 //       2 = Change Image Only
 //       3 = Both Image Change and Light effect
 
-   let userOption = 1; 
-// Change the 1 to another option's number if you choose. 
+   let userOption = 3; 
+// Change the 3 to another option's number if you choose. 
    
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
@@ -100,40 +100,25 @@
 
 
 
-for(let c of canvas.tokens.controlled){
-  if (c.actor.data.data.details.level > 0) {
-    console.log("XXXXX__//  ",c.data.name,"is a PC   \\\\__XXXXX");
-    continue;
-  } else {
-    let tokActor = c.actor;
-    
+const npcs = canvas.tokens.controlled.filter(i => i.actor.type === "npc");
+for(let npc of npcs){    
+    let tokActor = npc.actor;
     const rand = new Roll("1d100").evaluate({async: false});
+    console.log(">>>",npc.document.name," Random Roll: ",rand.total);
 
-    console.log("_________________________________________________________")
-    console.log("!!!",tokActor.data.name," Random Roll: ",rand.total);
-
-    ///////// Coins /////////
+  ///////// Coins /////////
     async function rollCoins(PP, GP, SP, CP) {    
-        let currency = tokActor.data.data.currency;
-    
+        let currency = tokActor.system.currency;
         let rollCP = await new Roll(CP).roll({async:true});
         let rollSP = await new Roll(SP).roll({async:true});
         let rollGP = await new Roll(GP).roll({async:true});
         let rollPP = await new Roll(PP).roll({async:true});
-    
-        let actorCP = currency.cp + rollCP.total;
-        let actorSP = currency.sp + rollSP.total;
-        let actorGP = currency.gp + rollGP.total;
-        let actorPP = currency.pp + rollPP.total;
-        
-        await tokActor.update({"data.currency.cp": currency.cp + rollCP.total, "data.currency.sp": currency.sp + rollSP.total, "data.currency.gp": currency.gp + rollGP.total, "data.currency.pp": currency.pp + rollPP.total});
-
-        await console.log('>>>',tokActor.data.name,'Coins Added>>   CP:',rollCP.total,' // SP:',rollSP.total,' // GP:',rollGP.total,' // PP:',rollPP.total,' // ',);
+        await tokActor.update({"system.currency.cp": currency.cp + rollCP.total, "system.currency.sp": currency.sp + rollSP.total, "system.currency.gp": currency.gp + rollGP.total, "system.currency.pp": currency.pp + rollPP.total});       
+        await console.log('>>>',npc.document.name,'Coins Added>>   CP:',rollCP.total,' // SP:',rollSP.total,' // GP:',rollGP.total,' // PP:',rollPP.total,' // ',);
     }
-
+    
     if(rand.total<26){
         console.log(">>> No coins found")                 //Nothing
-
     } else if (rand.total>26 && rand.total<56){
         await rollCoins("0","0","0","1d10");              //6CP avg
     } else if (rand.total>55 && rand.total<80){
@@ -149,48 +134,56 @@ for(let c of canvas.tokens.controlled){
     } else {
         await rollCoins("3d3","24d2","10d6","25d6");      //100GP avg
     }
-    
-    console.log("_________________________________________________________")   
-    
-     
-    if (c.actor.data.data.details.level > 0) {
+   
+               
+  ///////// Item Pile /////////
+    if (hasItemPiles === 1){
+        await ItemPiles.API.turnTokensIntoItemPiles(npc);
+    }
+  
+  ///////// Remove Weapons, Items, Spells, etc. from Itemp Pile /////////
+    const deleteIds = tokActor.items.filter(i => ["weapon","equipment","consumable"].includes(i.type)).map(i => i.id);
+    await tokActor.deleteEmbeddedDocuments('Item', deleteIds);
+
+  ///////// Image & Light Handling /////////     
+    if (npc.actor.system.details.level > 0) {
        break;
-    } else {   
-        if (hasItemPiles === 1){
-            ItemPiles.API.turnTokensIntoItemPiles(c);
-        }
+    } else {          
         if (userOption === 0){
         }else if (userOption === 1){
-            await c.data.document.update({
+            await npc.document.update({
                 light:{
-                    dim:0.5,
-                    bright:0.25,
+                    dim:.6,
+                    bright:.3,
                     luminosity:0,
                     alpha:1,
                     color:'#ad7600',
                     coloration:9,
                     animation:{
-                        type:"sunburst",
+                        type:"radialrainbow",
                         speed:3,
-                        intensity:10
+                        intensity:4
                     }
                 }
             });
         } else if (userOption === 2){
-            await c.document.update({img : imgPath, rotation : 0});
+            await npc.document.update({
+                img: imgPath, 
+                rotation : 0
+            });
         } else if (userOption === 3){
-            await c.data.document.update({
+            await npc.document.update({
                 img: imgPath,
                 rotation : 0,
                 light:{
-                    dim:0.5,
-                    bright:0.25,
+                    dim:1,
+                    bright:1,
                     luminosity:0,
                     alpha:1,
                     color:'#ad7600',
                     coloration:9,
                     animation:{
-                        type:"sunburst",
+                        type:"fairy",
                         speed:3,
                         intensity:10
                     }
@@ -200,5 +193,4 @@ for(let c of canvas.tokens.controlled){
             ui.notifications.error(`Error with User Options. Choose a valid option.`);
         }
     }
-  }
 }
